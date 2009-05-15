@@ -52,12 +52,18 @@ class PostGrowlNotifier extends Observer
     
     public function afterCreate($subject)
     {
-        $this->sendNotification($subject, "saved");
+        $this->sendNotification($subject, "created");
     }
     
     public function afterUpdate($subject)
     {
         $this->sendNotification($subject, "updated");
+    }
+    
+    
+    public function afterDestroy($subject)
+    {
+        $this->sendNotification($subject, "destroyed");
     }
     
     protected function sendNotification($subject, $action)
