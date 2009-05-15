@@ -5,14 +5,15 @@
  */
 abstract class Observer
 {
+    public function __construct()
+    {
+    }
+    
     public function update($method, $subject)
     {
         if (method_exists($this, $method)) {
             $this->$method($subject);
         }
-        // if (1 == 1 || is_callable(array(&$this, $method))) {
-        //     call_user_func_array(array(&$this, $method), array($subject));
-        // }
     }
 }
 

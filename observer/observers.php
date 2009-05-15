@@ -8,6 +8,8 @@ require_once 'abstract.php';
  */
 class CacheSweeper extends Observer
 {
+    $observedClasses = array("Post"); // Post, Comment ...
+
     public function afterSave($subject)
     {
         print __CLASS__ . ": Deleted single cache at /cache/post/$subject->id/post.cache\n";
@@ -24,6 +26,8 @@ class CacheSweeper extends Observer
  */
 class PostSubscriberNotifier extends Observer
 {
+    $observedClasses = array("Post");
+
     public function afterUpdate($subject)
     {
         $subscribers = array("weppos@weppos.net"); // ...
@@ -39,6 +43,8 @@ class PostSubscriberNotifier extends Observer
  */
 class PostGrowlNotifier extends Observer
 {
+    $observedClasses = array("Post");
+    
     public function afterInitialize($subject)
     {
         $this->sendNotification($subject, "initialized");
