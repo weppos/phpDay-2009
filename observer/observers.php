@@ -8,7 +8,7 @@ require_once 'abstract.php';
  */
 class CacheSweeper extends Observer
 {
-    $observedClasses = array("Post"); // Post, Comment ...
+    protected $observedClasses = array("Post"); // Post, Comment ...
 
     public function afterSave($subject)
     {
@@ -26,7 +26,7 @@ class CacheSweeper extends Observer
  */
 class PostSubscriberNotifier extends Observer
 {
-    $observedClasses = array("Post");
+    protected $observedClasses = array("Post");
 
     public function afterUpdate($subject)
     {
@@ -43,7 +43,7 @@ class PostSubscriberNotifier extends Observer
  */
 class PostGrowlNotifier extends Observer
 {
-    $observedClasses = array("Post");
+    protected $observedClasses = array("Post");
     
     public function afterInitialize($subject)
     {

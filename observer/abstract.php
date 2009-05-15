@@ -7,6 +7,7 @@ abstract class Observer
 {
     public function __construct()
     {
+        ObserverRegistry::registerObserver($this, $this->observedClasses);
     }
     
     public function update($method, $subject)
@@ -22,28 +23,41 @@ abstract class Observer
  */
 abstract class Subject
 {
-    public $observers = array();
-    
     public function notifyObservers($method) 
     {
-        foreach($this->observers as $observer) {
+        foreach(ObserverRegistry::getObservers("Post") as $observer) {
             $observer->update("after" . ucfirst($method), $this);
         }
     }
     
     public function attachObserver($observer)
     {
-        $this->observers[] = $observer;
+        ObserverRegistry::registerObserver($observer, __CLASS__);
+    }
+}
+
+class ObserverRegistry
+{
+    protected static $registry = array();
+    
+    public function registerObserver($observer, $observedClasses)
+    {
+        $observedClasses = (array) $observedClasses;
+        foreach($observedClasses as $subjectClass) {
+            self::$registry[$subjectClass][] = $observer;
+        }
     }
     
-    public function detachObserver($observer)
-    {   
-        $observers = array();
-        foreach($this->observers as $object) {
-            if ($object !== $observer) {
-                $observers[] = $object;
-            }
+    public static function initializeObservers($observers)
+    {
+        $observers = (array) $observers;
+        foreach($observers as $observerClass) {
+            $observer = new $observerClass();
         }
-        $this->observers = $observers;
+    }
+    
+    public static function getObservers($subjectClass) 
+    {
+        return self::$registry[$subjectClass];
     }
 }
