@@ -14,3 +14,6 @@ $post->destroy();
 
 $post = Post::create("All in one, baby!");
 $post->destroy();
+
+$output = Heap::getCommandsAsStrings();
+print implode($output);
