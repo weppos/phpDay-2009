@@ -1,0 +1,20 @@
+= Refactoring to Design Patterns (phpDay 2009)
+
+This repository contains all the source code from my "Refactoring to Design Patterns talk at phpDay 2009".
+
+Any feedback? Drop me an email anytime at weppos@weppos.net.
+
+
+== Resources
+
+* Blog Post: http://www.simonecarletti.com/blog/2009/05/refactoring-to-design-patterns/
+* Talk Page: http://www.phpday.it/site/phpday-2009/calendario-conferenze/canale-developers/refactoring-to-design-patterns/
+* Talk Reviews: http://joind.in/talk/view/417
+* Talk Slides: http://www.slideshare.net/weppos/refactoring-to-design-patterns-phpday-2009
+
+== License
+
+Copyright (c) 2009 Simone Carletti
+
+The content of this repository is published under the Attribution-Share Alike Unported Creative Common License.
+http://creativecommons.org/licenses/by-sa/3.0/
